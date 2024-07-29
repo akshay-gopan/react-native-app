@@ -53,7 +53,7 @@ export default function ProfileScreen({ navigation }) {
     },
 
     button: {
-      backgroundColor: "#000",
+      backgroundColor: "#F5004F",
       padding: 10,
       borderRadius: 5,
       marginBottom: 10,
@@ -73,7 +73,7 @@ export default function ProfileScreen({ navigation }) {
       <Text style={styles.name}>Name: {userData.name}</Text>
       <Text style={styles.email}>Email: {userData.email}</Text>
       <TouchableOpacity onPress={logout} style={styles.button}>
-        <Text style={styles.btnText}>Logout</Text>
+        <Text style={styles.btnText}>LOGOUT</Text>
       </TouchableOpacity>
     </View>
   );

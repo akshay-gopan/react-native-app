@@ -11,15 +11,15 @@ import {
 } from "react-native";
 import { auth } from "../services/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useAuth } from "../context/authProvider";
 
-const BACKGROUND_IMAGE_URL =
-  Platform.OS === "web"
-    ? "https://picsum.photos/1000"
-    : "https://picsum.photos/600";
+
+const BACKGROUND_IMAGE_URL = "https://picsum.photos/1920/1080?random=true&"
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth()
 
   const handleLogin = async () => {
     if (email && password) {
@@ -70,6 +70,21 @@ export default function LoginScreen({ navigation }) {
       borderWidth: 1,
     },
 
+    button: {
+        backgroundColor: "green",
+        padding: 10,
+        borderRadius: 5,
+        marginBottom: 10,
+        width: "auto",
+    },
+
+    btnText: {
+    color: "#fff",
+    textAlign: "center",
+    fontSize: 15,
+    fontWeight: "bold",
+    },
+
     navigation: {
       flexDirection: "row",
       justifyContent: "space-evenly",
@@ -105,7 +120,9 @@ export default function LoginScreen({ navigation }) {
             onChangeText={(text) => setPassword(text)}
             style={styles.input}
           />
-          <Button title="Login" onPress={handleLogin} style={styles.button} />
+          <TouchableOpacity  onPress={() => login(email, password)} style = {styles.button}>
+            <Text style={styles.btnText}>LOGIN</Text>
+        </TouchableOpacity>
           <View style={styles.navigation}>
             <Text>Don't have an account? </Text>
             <TouchableOpacity onPress={() => navigation.navigate("Signup")}>

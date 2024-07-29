@@ -10,9 +10,7 @@ import {
   Platform,
 } from "react-native";
 import { useAuth } from "../context/authProvider";
-import { auth, db } from "../services/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+
 
 export default function SignupScreen({ navigation }) {
   const [name, setName] = useState("");
@@ -20,10 +18,7 @@ export default function SignupScreen({ navigation }) {
   const [password, setPassword] = useState("");
   const { signup } = useAuth();
 
-  const BACKGROUND_IMAGE_URL =
-    Platform.OS === "web"
-      ? "https://picsum.photos/1000"
-      : "https://picsum.photos/600";
+ const BACKGROUND_IMAGE_URL = "https://picsum.photos/1920/1080?random=true"
 
   const styles = StyleSheet.create({
     container: {
@@ -60,6 +55,21 @@ export default function SignupScreen({ navigation }) {
       borderColor: "lightgray",
       borderWidth: 1,
     },
+
+    button: {
+      backgroundColor: "green",
+      padding: 10,
+      borderRadius: 5,
+      marginBottom: 10,
+      width: "auto",
+  },
+
+  btnText: {
+  color: "#fff",
+  textAlign: "center",
+  fontSize: 15,
+  fontWeight: "bold",
+  },
 
     navigation: {
       flexDirection: "row",
@@ -102,11 +112,13 @@ export default function SignupScreen({ navigation }) {
             onChangeText={(text) => setPassword(text)}
             style={styles.input}
           />
-          {/* <Button title="Submit" onPress={handleSignIn}  style={styles.button} /> */}
-          <Button
+          {/* <Button
             title="Signup"
             onPress={() => signup(name, email, password)}
-          />
+          /> */}
+          <TouchableOpacity onPress={() => signup(name, email, password)} style = {styles.button}>
+            <Text style={styles.btnText}>SIGNUP</Text>
+        </TouchableOpacity>
           <View style={styles.navigation}>
             <Text>Aready have an account? </Text>
             <TouchableOpacity onPress={() => navigation.navigate("Login")}>
