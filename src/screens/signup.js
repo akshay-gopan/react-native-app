@@ -18,7 +18,7 @@ export default function SignupScreen({ navigation }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signIn } = useAuth();
+  const { signup } = useAuth();
 
   const BACKGROUND_IMAGE_URL =
     Platform.OS === "web"
