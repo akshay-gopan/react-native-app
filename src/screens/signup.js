@@ -1,7 +1,5 @@
 import { useState } from "react";
 import {
-  View,
-  Text,
   TextInput,
   TouchableOpacity,
   StyleSheet,
@@ -10,6 +8,8 @@ import {
 // import { useAuth } from "../context/authProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../redux/authSlice";
+import View from "../components/restyle/view";
+import Text from "../components/restyle/text";
 
 const styles = StyleSheet.create({
   container: {
@@ -91,7 +91,7 @@ export default function SignupScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <View flex={1}>
       <ImageBackground
         source={{ uri: BACKGROUND_IMAGE_URL }}
         style={styles.bgimage}

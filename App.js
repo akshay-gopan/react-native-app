@@ -7,7 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./src/services/firebase";
 import { login, logout } from "./src/redux/authSlice";
 import { ThemeProvider } from "@shopify/restyle";
-import theme from "./theme/theme";
+import theme from "./src/theme/index";
 import store from "./src/redux/store";
 import LoginScreen from "./src/screens/login";
 import HomeScreen from "./src/screens/home";
@@ -15,7 +15,7 @@ import SignupScreen from "./src/screens/signup";
 import ProfileScreen from "./src/screens/profile";
 
 const Stack = createNativeStackNavigator();
-const App = () => {
+const Root = () => {
   const dispatch = useDispatch();
   const { user, status } = useSelector((state) => state.auth);
 
@@ -52,31 +52,13 @@ const App = () => {
   );
 };
 
-// const AppNavigator = () => {
-//   // const { user } = useAuth();
 
-//   return (
-//     <Stack.Navigator>
-//       {user ? (
-//         <>
-//           <Stack.Screen name="Home" component={HomeScreen} />
-//           <Stack.Screen name="Profile" component={ProfileScreen} />
-//         </>
-//       ) : (
-//         <>
-//           <Stack.Screen name="Login" component={LoginScreen} />
-//           <Stack.Screen name="Signup" component={SignupScreen} />
-//         </>
-//       )}
-//     </Stack.Navigator>
-//   );
-// };
 
-const Root = () => (
+const App = () => (
   <Provider store={store}>
     <ThemeProvider theme={theme}>
-    <App />
+    <Root />
     </ThemeProvider>
   </Provider>
 );
-export default Root;
+export default App;

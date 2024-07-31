@@ -1,7 +1,5 @@
 import { useState } from "react";
 import {
-  View,
-  Text,
   TextInput,
   StyleSheet,
   ImageBackground,
@@ -12,6 +10,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useAuth } from "../context/authProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/authSlice";
+import View from "../components/restyle/view";
+import Text from "../components/restyle/text";
 
 const BACKGROUND_IMAGE_URL = "https://picsum.photos/1920/1080?random=true&";
 
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "lightgray",
     borderWidth: 1,
+    width: "80%",
   },
 
   button: {
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginBottom: 10,
-    width: "auto",
+    width: "80%",
   },
 
   btnText: {
@@ -92,12 +93,22 @@ export default function LoginScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <View flex={1}>
       <ImageBackground
         source={{ uri: BACKGROUND_IMAGE_URL }}
         style={styles.bgimage}
       >
-        <View style={styles.form}>
+        <View 
+          
+          width="80%"
+          height="45%"
+          justifyContent="center"
+          alignItems="center"
+          backgroundColor="white"
+          paddingVertical="l"
+          borderRadius={10}
+          
+          >
           <Text style={styles.formhead}>Login</Text>
           <TextInput
             placeholder="Email"
